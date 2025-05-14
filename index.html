@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Task Management System</h1>
-    <form action="" class="formContent">
+    <form action="" id="formContent">
         <input type="text" name="task" placeholder="Enter Task Title" required>
         <input type="text" name="description" placeholder="Describe the kind of task" required>
         <input type="text"  name="priority" placeholder="Priority: Low medium High Urgent" required>
@@ -16,7 +16,7 @@
         <input type="datetime-local" placeholder="Choose Date of Submission" required>
         <input type="submit" placeholder="Submit">
     </form>
-    <table class="tabledata">
+    <table id="tabledata">
         <thead>
             <tr>
                 <th>Task Title</th>
@@ -24,6 +24,7 @@
                 <th>Priority</th>
                 <th>Status</th>
                 <th>Date of Submission</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody></tbody>
