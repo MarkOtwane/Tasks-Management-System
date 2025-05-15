@@ -5,14 +5,29 @@
 }
 #tabledata{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    tr{
+        th{
+            padding: 25px;
+        }
+        td{
+            padding: 25px;
+        }
+    }
 }
-tr{
+/* tr{
     display: flex;
-    flex-direction: row;
     gap : 3rem;
     justify-content: space-between;
     padding: 1rem;
-    border: 1px solid black;
+    /* border: 1px solid black;
+    th{
+        border: 1px solid black;
+    } */
+} */
+form{
+    display: flex;
+    flex-direction: column;
 }
