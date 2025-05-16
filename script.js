@@ -28,7 +28,7 @@ function fillTable(){
     tablebody.innerHTML = ''
     
     // iterating through objects
-    tasks.forEach(task =>{
+    tasks.forEach((task, index) =>{
         const newTask = document.createElement('tr');
         newTask.innerHTML = `
             <td>${task.task}</td>
@@ -37,12 +37,25 @@ function fillTable(){
             <td>${task.status}</td>
             <td>${task.time}</td>
             <td>
-            <button>Remove</button>
-            <button>Edit</button>
+            <button class="remove-btn">Remove</button>
             </td>
-        `
+        `;
         tablebody.appendChild(newTask);
+        // Function to remove an item from the scheduler
+        const removeBtn = newTask.querySelector(".remove-btn");
+        removeBtn.addEventListener("click", () => {
+        newTask.remove(); // remove the row
+        tasks.splice(index, 1); // remove the task from the array
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+});
     });
     form.reset()
 
 }
+
+const removeBtn = newTask.querySelector(".remove-btn");
+        removeBtn.addEventListener("click", () => {
+        newTask.remove(); // remove the row
+        tasks.splice(index, 1); // remove the task from the array
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+});
