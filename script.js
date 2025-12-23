@@ -4,6 +4,17 @@ const tablebody = document.querySelector("tbody");
 const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 fillTable()
 
+// Add Enter key support for all input fields
+const inputs = form.querySelectorAll("input");
+inputs.forEach(input => {
+    input.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            form.dispatchEvent(new Event("submit"));
+        }
+    });
+});
+
 form.addEventListener('submit', (e)=>{
     e.preventDefault()
 
@@ -38,6 +49,7 @@ function fillTable(){
             <td>${task.time}</td>
             <td>
             <button class="remove-btn">Remove</button>
+            <button class = "edit-btn">Edit</button>
             </td>
         `;
         tablebody.appendChild(newTask);
@@ -47,15 +59,18 @@ function fillTable(){
         newTask.remove(); // remove the row
         tasks.splice(index, 1); // remove the task from the array
         localStorage.setItem("tasks", JSON.stringify(tasks));
-});
+    });
+    const editBtn = newTask.querySelector(".edit-btn");
+    editBtn.addEventListener("click", ()=>{
+        // Create an in[put field] ide
+        const inputField = document.createElement("input")
+        // Identify which task is to be edited, replace the display text with an input containing the existing data, listen for a save of blur event, update the data on your local storage
+        inputField.type = "text";
+        newTask.append(inputField);
+        // tasks.trim(index, 1)
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    });
     });
     form.reset()
 
 }
-
-const removeBtn = newTask.querySelector(".remove-btn");
-        removeBtn.addEventListener("click", () => {
-        newTask.remove(); // remove the row
-        tasks.splice(index, 1); // remove the task from the array
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-});
